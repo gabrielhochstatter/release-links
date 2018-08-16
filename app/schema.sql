@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IS EXISTS release;
+
+CREATE TABLE user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE release (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner_id INTEGER NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title TEXT NOT NULL,
+    artist TEXT NOT NULL,
+    label TEXT NOT NULL,
+    link_1 TEXT NOT NULL,
+    link_2 TEXT,
+    link_3 TEXT,
+    FOREIGN KEY (owner_id) REFERENCES user (id)
+);
