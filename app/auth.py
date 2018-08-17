@@ -32,7 +32,7 @@ def register():
                 (username, generate_password_hash(password))
             )
             db.commit()
-            return redirect(url_for('auth_login'))
+            return redirect(url_for('auth.login'))
 
         flash(error)
 
@@ -55,9 +55,9 @@ def login():
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect Password.'
 
-        if error = None:
+        if error is None:
             session.clear()
-            session.['user_id'] = user['id']
+            session['user_id'] = user['id']
             return redirect(url_for('index'))
 
         flash(error)
@@ -69,7 +69,7 @@ def login():
 def load_logged_in_user():
     user_id = session.get('user_id')
 
-    if user_id = None:
+    if user_id is None:
         g.user = None
     else:
         g.user = get_db().execute(
@@ -86,7 +86,7 @@ def logout():
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.user = None:
+        if g.user is None:
             return redirect(url_for('auth.login'))
 
         return view(**kwargs)
