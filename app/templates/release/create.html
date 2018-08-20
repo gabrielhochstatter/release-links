@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>Create a new campaign:</h1>
-{% endblock %}
-
 {% block content %}
-<div class="third">
+  <h2>Create a new campaign:</h2>
+  <div class="third">
     <form method="post">
       <input class="stack" placeholder="Title" name="title" id="title" required>
       <input class="stack" placeholder="Artist"  name="artist" id="artist" required>
@@ -15,6 +12,5 @@
       <input class="stack" placeholder="YouTube Link" name="link_3" id="link_3">
       <input class="stack" type="submit" value="Create!">
     </form>
-  
   </div>
 {% endblock %}

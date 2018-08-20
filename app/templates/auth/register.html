@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-<div class="third">
+  <h2>{% block title %}Register{% endblock %}</h2>
+  <div class="third">
     <form method="post">
       <!-- <label for="username">Username</label> -->
       <input class="stack" placeholder="Username" name="username" id="username" required>
@@ -13,6 +10,5 @@
       <input class="stack" placeholder="Password" type="password" name="password" id="password" required>
       <input class="stack" type="submit" value="Register">
     </form>
-  
   </div>
 {% endblock %}
