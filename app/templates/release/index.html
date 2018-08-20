@@ -6,6 +6,6 @@
 
 {% block content %}
     {% if g.user %}
-        <a class="action" href="{{ url_for('release.index') }}">Create a new campaign</a>
+        <a class="action" href="{{ url_for('release.create') }}">Create a new campaign</a>
     {% endif %}
 {% endblock %}

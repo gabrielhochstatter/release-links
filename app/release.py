@@ -28,6 +28,9 @@ def create():
         if not title:
             error = 'A title is required!'
 
+        if not artist:
+            error = 'An artist name is required!'
+
         if error is not None:
             flash(error)
         else:
@@ -39,3 +42,6 @@ def create():
             )
             db.commit()
             return redirect(url_for('release.index'))
+    
+    else:
+        return render_template('release/create.html')
