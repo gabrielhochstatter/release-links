@@ -1,9 +1,10 @@
 <!doctype html>
 <head>
     <title>ReleaseLinks - {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://unpkg.com/picnic">
+    <link rel="stylesheet" href="{{ url_for('static', filename='picnic.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
@@ -18,7 +19,9 @@
 
         <div class="menu">
             {% if g.user %}
-                <span>{{ g.user['username'] }}</span>
+                <a href="{{ url_for('user.profile', username=g.user['username']) }}" class="pseudo button">
+                    {{ g.user['username'] }}
+                </a>
                 <a href="{{ url_for('auth.logout') }}" class="pseudo button">
                     Log Out
                 </a>

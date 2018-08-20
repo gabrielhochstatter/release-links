@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>
+        {% block title %}
+            {{ user['username'] }}
+        {% endblock %}
+    </h1>
+{% endblock %}
+
+{% block content %}
+    {% for release in releases %}
+    <p>
+        <a href="{{ url_for('release.display', id=release['id']) }}">{{ release['title'] }}</a>
+    </p>
+    {% endfor %}
+{% endblock %}

@@ -1,9 +1,8 @@
 .hero {
     padding-top: 25px;
-
 }
 
-
-.nav-link {
-    text-decoration: underline;
+.faded {
+    color: lightgray !important;
 }
+
