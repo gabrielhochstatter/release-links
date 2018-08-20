@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>
+        {% block title %}
+            {{ release['title'] }}
+        {% endblock %}
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="third center">
+        <p>
+            Released on <strong>{{ release['label'] }}</strong> by <strong>{{ release['artist'] }}</strong>. 
+        </p>
+        <p>
+            <strong>Pick your preferred streaming service below:</strong>
+        </p>
+        <p>{{ release['link_2'] }}</p>
+        <a href="{{ release['link_1'] }}" class="button full">Spotify</a>
+        {% if release['link_2'] %}
+        <a href="{{ release['link_2'] }}" class="button full">Apple Music</a>
+        {% endif %}
+        {% if release['link_3'] %}
+        <a href="{{ release['link_3'] }}" class="button full">YouTube</a>
+        {% endif %}
+    </div>
+{% endblock %}

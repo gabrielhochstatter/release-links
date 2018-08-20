@@ -8,6 +8,17 @@ from app.db import get_db
 
 bp = Blueprint('release', __name__)
 
+def get_release(id):
+    release = get_db().execute(
+        'SELECT r.id, title, artist, label, link_1, link_2, link_3'
+        ' FROM release r WHERE r.id = ?', (id,)
+    ).fetchone()
+
+    if release is None:
+        abort(404, "This release does not exist!")
+
+    return release
+
 @bp.route('/')
 def index():
     return render_template('release/index.html')
@@ -45,3 +56,9 @@ def create():
     
     else:
         return render_template('release/create.html')
+
+@bp.route('/r/<int:id>')
+def display(id):
+    release = get_release(id)
+
+    return render_template('release/display.html', release=release)
