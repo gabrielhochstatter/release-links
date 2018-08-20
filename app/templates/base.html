@@ -1,25 +1,52 @@
 <!doctype html>
-<title>LinkManage - {% block title %}{% endblock %}</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-    <h1>LinkManage</h1>
-    <ul>
-        {% if g.user %}
-            <li><span>{{ g.user['username'] }}</span></li>
-            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-        {% else %}
-            <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-        {% endif %}
-    </ul>
-</nav>
+<head>
+    <title>ReleaseLinks - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/picnic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-<section class="content">
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-    {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-    {% block content %}{% endblock %}
-</section>
+</head>
+<body>
+    <nav>
+        <a href="/" class="brand">ReleaseLinks</a>
+
+        <input id="bmenub" type="checkbox" class="show">
+        <label for="bmenub" class="burger pseudo button">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <div class="menu">
+            {% if g.user %}
+                <span>{{ g.user['username'] }}</span>
+                <a href="{{ url_for('auth.logout') }}" class="pseudo button">
+                    Log Out
+                </a>
+            {% else %}
+                <a href="{{ url_for('auth.register') }}" class="pseudo button">
+                    Register
+                </a>
+                <a href="{{ url_for('auth.login') }}" class="pseudo button">
+                    Login
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+    <main class="hero">
+        <section class="content flex five center">
+            <article class="three-fifth-800">
+                <header>
+                    {% block header %}{% endblock %}
+                </header>
+                {% for message in get_flashed_messages() %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+                
+                {% block content %}{% endblock %}
+
+            </article>
+
+        </section>
+
+    </main>
+</body>
