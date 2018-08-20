@@ -37,10 +37,10 @@
     </nav>
     <main class="hero">
         <section class="content flex five center">
-            <article class="three-fifth-800">
-                <header>
-                    {% block header %}{% endblock %}
-                </header>
+            <article class="three-fifth five-fifth-800">
+                <!-- <header>
+                    
+                </header> -->
                 {% for message in get_flashed_messages() %}
                     <div class="flash">{{ message }}</div>
                 {% endfor %}
