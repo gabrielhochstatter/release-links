@@ -12,7 +12,11 @@
             <div class="hero-content center">
         
                 <h1 class="hero-title">
+                    {% if g.user %}
+                    Welcome back, {{ g.user['username'] }}!
+                    {% else %}
                     {% block title %}Welcome to ReleaseLinks!{% endblock %}
+                    {% endif %}
                 </h1>
                 <p>
                     The easy way to share streaming links to your fans
@@ -23,7 +27,11 @@
                     <i class="fab fa-youtube"></i>
                 </p>
                 {% if g.user %}
-                    <a class="button" href="{{ url_for('release.create') }}">Get Started</a>
+                <a class="button" href="{{ url_for('user.profile', username=g.user['username']) }}">Dashboard</a>
+                <br>
+                <a class="button" href="{{ url_for('release.create') }}">Create New Release</a>
+                {% else %}
+                <a class="button" href="{{ url_for('auth.register') }}">Get Started</a>
                 {% endif %}
                 
                 

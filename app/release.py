@@ -65,6 +65,7 @@ def display(id):
 
 
 @bp.route('/r/update/<int:id>', methods=('GET', 'POST'))
+@login_required
 def update(id):
     release = get_release(id)
 
