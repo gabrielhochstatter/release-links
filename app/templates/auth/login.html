@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>{% block title %}Log In{% endblock %}</h2>
-  <div class="third">
-    <form method="post">
-      <!-- <label for="username">Username</label> -->
-      <input class="stack" placeholder="Username" name="username" id="username" required>
-      <!-- <label for="password">Password</label> -->
-      <input class="stack" placeholder="Password" type="password" name="password" id="password" required>
-      <input class="stack" type="submit" value="Log In">
-    </form>
-  </div>
+
+<section class="content flex five center">
+    <article class="three-fifth five-fifth-800">
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        
+        <h2>{% block title %}Log In{% endblock %}</h2>
+        <div class="third">
+          <form method="post">
+            <!-- <label for="username">Username</label> -->
+            <input class="stack" placeholder="Username" name="username" id="username" required>
+            <!-- <label for="password">Password</label> -->
+            <input class="stack" placeholder="Password" type="password" name="password" id="password" required>
+            <input class="stack" type="submit" value="Log In">
+          </form>
+        </div>
+
+    </article>
+
+</section>
+
 {% endblock %}

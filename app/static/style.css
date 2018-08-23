@@ -1,8 +1,33 @@
 .hero {
-    padding-top: 75px;
+    padding-top: 50px;
+    width: 100%;
 }
 
 .faded {
     color: lightgray !important;
 }
 
+.hero-image {
+    background: url('https://i.imgur.com/enBt2uB.jpg');
+    padding-left: 10px;
+    margin-left: -10px;
+    height: 450px;
+    background-size: cover;
+}
+
+.hero-content {
+    padding-top: 45px;
+    text-align: center;
+    color: white;
+}
+
+.hero-title {
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+    color: white;
+}
+
+.hero-icons {
+    font-size: 200%;
+    padding-top: 0px; 
+}

@@ -1,8 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{% block title %}Welcome to ReleaseLinks!{% endblock %}</h2>
-    {% if g.user %}
-        <a class="action" href="{{ url_for('release.create') }}">Create a new campaign</a>
-    {% endif %}
+
+
+    <section class="hero-image content flex five center">
+        <article class="three-fifth five-fifth-800">
+            {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+            
+            <div class="hero-content center">
+        
+                <h1 class="hero-title">
+                    {% block title %}Welcome to ReleaseLinks!{% endblock %}
+                </h1>
+                <p>
+                    The easy way to share streaming links to your fans
+                </p>
+                <p class="hero-icons">
+                    <i class="fab fa-spotify"></i>
+                    <i class="fab fa-itunes"></i>
+                    <i class="fab fa-youtube"></i>
+                </p>
+                {% if g.user %}
+                    <a class="button" href="{{ url_for('release.create') }}">Get Started</a>
+                {% endif %}
+                
+                
+            </div>
+
+        </article>
+
+    </section>
 {% endblock %}

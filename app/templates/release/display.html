@@ -1,31 +1,38 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>
-        {% block title %}
-            {{ release['title'] }}
-        {% endblock %}
-    </h1>
-{% endblock %}
+
 
 {% block content %}
-    <div class="flex three center">
-        <div class="full third-800">
-            <h2>{{ release['title'] }}</h2>
-            <p>
-                Released on <strong>{{ release['label'] }}</strong> by <strong>{{ release['artist'] }}</strong>. 
-            </p>
-            <p>
-                <strong>Pick your preferred streaming service below:</strong>
-            </p>
-            
-            <a href="{{ release['link_1'] }}" class="button full">Spotify</a>
-            {% if release['link_2'] %}
-            <a href="{{ release['link_2'] }}" class="button full">Apple Music</a>
-            {% endif %}
-            {% if release['link_3'] %}
-            <a href="{{ release['link_3'] }}" class="button full">YouTube</a>
-            {% endif %}
-        </div>
-    </div>
+<section class="content flex five center">
+        <article class="three-fifth five-fifth-800">
+            {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+            <div class="flex three center">
+                    <div class="full third-800">
+                        <h2>
+                            {% block title %}
+                            {{ release['title'] }}
+                            {% endblock %}
+                        </h2>
+                        <p>
+                            Released on <strong>{{ release['label'] }}</strong> by <strong>{{ release['artist'] }}</strong>. 
+                        </p>
+                        <p>
+                            <strong>Pick your preferred streaming service below:</strong>
+                        </p>
+                        
+                        <a href="{{ release['link_1'] }}" class="button full">Spotify</a>
+                        {% if release['link_2'] %}
+                        <a href="{{ release['link_2'] }}" class="button full">Apple Music</a>
+                        {% endif %}
+                        {% if release['link_3'] %}
+                        <a href="{{ release['link_3'] }}" class="button full">YouTube</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+        </article>
+
+    </section>
 {% endblock %}
