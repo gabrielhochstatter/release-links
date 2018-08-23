@@ -40,8 +40,8 @@
                 </p>
                 {% if user['username'] == g.user['username']  %}
                 <footer>
-                    <a href="#" class="button pseudo"><i class="fas fa-edit"></i></a>
-                    <a href="#" class="button pseudo"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{{ url_for('release.update', id=release['id']) }}" data-tooltip="Edit" class="button tooltip-top"><i class="fas fa-edit"></i></a>
+                    <a href="#" data-tooltip="Delete" class="button tooltip-top"><i class="fas fa-trash-alt"></i></a>
                 </footer>
                 {% endif %}
             </article>

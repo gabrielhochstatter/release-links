@@ -29,6 +29,11 @@
                         {% if release['link_3'] %}
                         <a href="{{ release['link_3'] }}" class="button full">YouTube</a>
                         {% endif %}
+                        {% if release['owner_id'] == g.user['id'] %}
+                        <a href="{{ url_for('release.update', id=release['id']) }}" data-tooltip="Edit" class="button tooltip">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
 
