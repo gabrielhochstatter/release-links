@@ -1,17 +1,42 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h1>
-        {% block title %}
-            {{ user['username'] }}
-        {% endblock %}
-    </h1>
-{% endblock %}
-
 {% block content %}
+    <h3>
+        {% block title %}
+            {{ user['username'] }}{% endblock %}'s Releases:
+        
+    </h3>
     {% for release in releases %}
-    <p>
-        <a href="{{ url_for('release.display', id=release['id']) }}">{{ release['title'] }}</a>
-    </p>
+    <article class="card">
+        <header>
+            <h4>
+                <a href="{{ url_for('release.display', id=release['id']) }}">{{ release['title'] }}</a>
+            </h4>
+        </header>
+        <p>
+            By: <strong>{{ release['artist'] }}</strong>
+        </p>
+        <p>Released on: <strong>{{ release['label'] }}</strong></p>
+        <p>
+            Available links: <i class="fab fa-spotify"></i> 
+            {% if release['link_2'] %}
+                <i class="fab fa-itunes"></i>
+            {% endif %}
+            {% if release['link_3'] %}
+                <i class="fab fa-youtube"></i>
+            {% endif %}
+        </p>
+        <p>
+            <small class="faded">
+                Added on: {{ release['created'].strftime('%B %dth, %Y') }}
+            </small>
+        </p>
+        {% if user['username'] == g.user['username']  %}
+        <footer>
+            <a href="#" class="button pseudo"><i class="fas fa-edit"></i></a>
+            <a href="#" class="button pseudo"><i class="fas fa-trash-alt"></i></a>
+        </footer>
+        {% endif %}
+    </article>
     {% endfor %}
 {% endblock %}
